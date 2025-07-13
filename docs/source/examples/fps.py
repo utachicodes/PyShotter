@@ -1,5 +1,5 @@
 """This is part of the MSS Python's module.
-Source: https://github.com/BoboTiG/python-mss.
+Source: https://github.com/utachicodes/pyshotter.
 
 Simple naive benchmark to compare with:
     https://pythonprogramming.net/game-frames-open-cv-python-plays-gta-v/

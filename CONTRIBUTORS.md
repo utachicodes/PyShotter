@@ -1,18 +1,33 @@
 # Contributors
 
-The full list can be found here: https://github.com/BoboTiG/python-mss/graphs/contributors
+## Creator and Maintainer
 
-That document is mostly useful for users without a GitHub account (sorted alphabetically):
+**Abdoullah Ndao** - [@utachicodes](https://github.com/utachicodes)
+- Original creator and maintainer of PyShotter
+- Lead developer and architect
+- Email: abdoullahaljersi@gmail.com
 
-- [bubulle](http://indexerror.net/user/bubulle)
-  - Windows: efficiency of MSS.get_pixels()
-- [Condé 'Eownis' Titouan](https://titouan.co)
-  - MacOS X tester
-- [David Becker](https://davide.me)
-  - Mac: Take into account extra black pixels added when screen with is not divisible by 16
-- [Oros](https://ecirtam.net)
-  - GNU/Linux tester
-- [yoch](http://indexerror.net/user/yoch)
-  - Windows: efficiency of `MSS.get_pixels()`
-- Wagoun
-  - equipment loan (Macbook Pro)
+## Acknowledgments
+
+PyShotter is a complete rebrand and enhancement of the original mss library, with significant new features and improvements including:
+
+- Advanced screenshot detection
+- OCR text extraction
+- Sensitive data redaction
+- Multi-monitor panorama stitching
+- Change detection capabilities
+- Annotation tools
+- Screenshot history management
+- Hotkey management
+- Sharing capabilities
+- AI-based image enhancement
+
+All original functionality has been preserved and enhanced, with the codebase completely rewritten and rebranded under the PyShotter name.
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for more information.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.

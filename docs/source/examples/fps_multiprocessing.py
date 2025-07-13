@@ -1,5 +1,5 @@
 """This is part of the MSS Python's module.
-Source: https://github.com/BoboTiG/python-mss.
+Source: https://github.com/utachicodes/pyshotter.
 
 Example using the multiprocessing module to speed-up screen capture.
     https://github.com/pythonlessons/TensorFlow-object-detection-tutorial

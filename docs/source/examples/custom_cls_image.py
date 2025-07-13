@@ -1,5 +1,5 @@
 """This is part of the MSS Python's module.
-Source: https://github.com/BoboTiG/python-mss.
+Source: https://github.com/utachicodes/pyshotter.
 
 Screenshot of the monitor 1, using a custom class to handle the data.
 """

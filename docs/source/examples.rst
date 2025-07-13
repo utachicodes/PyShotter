@@ -91,7 +91,7 @@ You can get the bytes of the PNG image:
         sct_img = sct.grab(monitor)
 
         # Generate the PNG
-        png = mss.tools.to_png(sct_img.rgb, sct_img.size)
+        png = pyshotter.tools.to_png(sct_img.rgb, sct_img.size)
 
 Advanced
 ========
@@ -166,7 +166,7 @@ BGRA to RGB
 
 Different possibilities to convert raw BGRA values to RGB::
 
-    def mss_rgb(im):
+    def pyshotter_rgb(im):
         """ Better than Numpy versions, but slower than Pillow. """
         return im.rgb
 

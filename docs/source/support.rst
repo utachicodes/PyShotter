@@ -2,7 +2,7 @@
 Support
 =======
 
-Feel free to try MSS on a system we had not tested, and let us know by creating an `issue <https://github.com/BoboTiG/python-mss/issues>`_.
+Feel free to try PyShotter on a system we had not tested, and let us know by creating an `issue <https://github.com/utachicodes/pyshotter/issues>`_.
 
     - OS: GNU/Linux, macOS, and Windows
     - Python: 3.9 and newer

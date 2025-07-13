@@ -2,10 +2,10 @@
 Who Uses it?
 ============
 
-This is a non exhaustive list where MSS is integrated or has inspired.
-Do not hesitate to `say Hello! <https://github.com/BoboTiG/python-mss/issues>`_ if you are using MSS too.
+This is a non exhaustive list where PyShotter is integrated or has inspired.
+Do not hesitate to `say Hello! <https://github.com/utachicodes/pyshotter/issues>`_ if you are using PyShotter too.
 
-- `Airtest <https://github.com/AirtestProject/Airtest>`_, a cross-platform UI automation framework for aames and apps;
+- `Airtest <https://github.com/AirtestProject/Airtest>`_, a cross-platform UI automation framework for games and apps;
 - `Automation Framework <https://github.com/capaximperii/AutomationFramework>`_, a Batmans utility;
 - `DeepEye <https://github.com/thayerAlshaabi/DeepEye>`_, a deep vision-based software library for autonomous and advanced driver-assistance systems;
 - `DoomPy <https://github.com/WNoxchi/DoomPy>`_ (Autonomous Anti-Demonic Combat Algorithms);
@@ -20,7 +20,6 @@ Do not hesitate to `say Hello! <https://github.com/BoboTiG/python-mss/issues>`_ 
 - `Open Source Self Driving Car Initiative <https://github.com/OSSDC/OSSDC-VisionBasedACC>`_;
 - `OSRS Bot COLOR (OSBC) <https://github.com/kelltom/OSRS-Bot-COLOR>`_, a lightweight desktop client for controlling and monitoring color-based automation scripts (bots) for OSRS and private server alternatives;
 - `Philips Hue Lights Ambiance <https://github.com/digital-concrete-jungle/hue-ambiance>`_;
-- `Pombo <https://github.com/BoboTiG/pombo>`_, a thief recovery software;
 - `Python-ImageSearch <https://github.com/drov0/python-imagesearch>`_, a wrapper around OpenCV2 and PyAutoGUI to do image searching easily;
 - `PUBGIS <https://github.com/andrewzwicky/PUBGIS>`_, a map generator of your position throughout PUBG gameplay;
 - `ScreenCapLibrary <https://github.com/mihaiparvu/ScreenCapLibrary>`_, a Robot Framework test library for capturing screenshots and video recording;

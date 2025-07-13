@@ -7,7 +7,7 @@ Developers
 Setup
 =====
 
-1. You need to fork the `GitHub repository <https://github.com/BoboTiG/python-mss>`_.
+1. You need to fork the `GitHub repository <https://github.com/utachicodes/pyshotter>`_.
 2. Create you own branch.
 3. Be sure to add/update tests and documentation within your patch.
 

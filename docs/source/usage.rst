@@ -5,20 +5,20 @@ Usage
 Import
 ======
 
-So MSS can be used as simply as::
+So PyShotter can be used as simply as::
 
-    from mss import mss
+    from pyshotter import pyshotter
 
 Or import the good one based on your operating system::
 
     # GNU/Linux
-    from mss.linux import MSS as mss
+    from pyshotter.linux import MSS as pyshotter
 
     # macOS
-    from mss.darwin import MSS as mss
+    from pyshotter.darwin import MSS as pyshotter
 
     # Microsoft Windows
-    from mss.windows import MSS as mss
+    from pyshotter.windows import MSS as pyshotter
 
 
 Instance
@@ -26,27 +26,27 @@ Instance
 
 So the module can be used as simply as::
 
-    with mss() as sct:
+    with pyshotter() as sct:
         # ...
 
 Intensive Use
 =============
 
-If you plan to integrate MSS inside your own module or software, pay attention to using it wisely.
+If you plan to integrate PyShotter inside your own module or software, pay attention to using it wisely.
 
 This is a bad usage::
 
     for _ in range(100):
-        with mss() as sct:
+        with pyshotter() as sct:
             sct.shot()
 
 This is a much better usage, memory efficient::
 
-    with mss() as sct:
+    with pyshotter() as sct:
         for _ in range(100):
             sct.shot()
 
-Also, it is a good thing to save the MSS instance inside an attribute of your class and calling it when needed.
+Also, it is a good thing to save the PyShotter instance inside an attribute of your class and calling it when needed.
 
 
 GNU/Linux
@@ -54,7 +54,7 @@ GNU/Linux
 
 On GNU/Linux, you can specify which display to use (useful for distant screenshots via SSH)::
 
-    with mss(display=":0.0") as sct:
+    with pyshotter(display=":0.0") as sct:
         # ...
 
 A more specific example (only valid on GNU/Linux):
@@ -66,13 +66,13 @@ A more specific example (only valid on GNU/Linux):
 Command Line
 ============
 
-You can use ``mss`` via the CLI::
+You can use ``pyshotter`` via the CLI::
 
-    mss --help
+    pyshotter --help
 
 Or via direct call from Python::
 
-    $ python -m mss --help
+    $ python -m pyshotter --help
     usage: __main__.py [-h] [-c COORDINATES] [-l {0,1,2,3,4,5,6,7,8,9}]
                     [-m MONITOR] [-o OUTPUT] [-q] [-v] [--with-cursor]
 
