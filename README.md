@@ -2,7 +2,6 @@
 
 [![PyPI version](https://badge.fury.io/py/pyshotter.svg)](https://badge.fury.io/py/pyshotter)
 [![Tests workflow](https://github.com/utachicodes/pyshotter/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/utachicodes/pyshotter/actions/workflows/tests.yml)
-[![Downloads](https://static.pepy.tech/personalized-badge/pyshotter?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/pyshotter)
 
 > [!TIP]
 > **PyShotter** - Smart, annotated, and shareable screenshots for Python.
