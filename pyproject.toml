@@ -1,0 +1,100 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyshotter"
+description = "PyShotter: Smart, annotated, and shareable screenshots for Python."
+readme = "README.md"
+requires-python = ">= 3.9"
+authors = [
+  { name = "Abdoullah Ndao", email="abdoullahaljersi@gmail.com" },
+]
+maintainers = [
+  { name = "Abdoullah Ndao", email="abdoullahaljersi@gmail.com" },
+]
+license = { file = "LICENSE.txt" }
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: MacOS X",
+  "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: Unix",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Scientific/Engineering :: Image Processing",
+  "Topic :: Text Processing :: Linguistic",
+]
+keywords = [
+    "screenshot",
+    "screen capture",
+    "annotation",
+    "sharing",
+    "smart detection",
+    "ocr",
+    "text extraction",
+    "redaction",
+    "panorama",
+    "change detection",
+    "hotkeys",
+    "history",
+    "python",
+    "cross-platform",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/utachicodes/pyshotter"
+Documentation = "https://github.com/utachicodes/pyshotter#readme"
+Changelog = "https://github.com/utachicodes/pyshotter/blob/main/CHANGELOG.md"
+Source = "https://github.com/utachicodes/pyshotter"
+Tracker = "https://github.com/utachicodes/pyshotter/issues"
+
+[project.scripts]
+pyshotter = "pyshotter.__main__:main"
+
+[project.optional-dependencies]
+ocr = [
+  "pytesseract>=0.3.10",
+  "opencv-python>=4.8.0",
+]
+annotation = [
+  "opencv-python>=4.8.0",
+  "pillow>=9.0.0",
+]
+sharing = [
+  "pyperclip>=1.8.0",
+  "requests>=2.31.0",
+]
+cloud = [
+  "requests>=2.31.0",
+  "dropbox>=11.36.0",
+]
+
+[tool.hatch.version]
+path = "src/pyshotter/__init__.py"
+
+[tool.hatch.build]
+skip-excluded-dirs = true
+
+[tool.hatch.build.targets.sdist]
+only-include = [
+  "CHANGELOG.md",
+  "CHANGES.md",
+  "CONTRIBUTORS.md",
+  "docs/source",
+  "src",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = [
+  "src/pyshotter",
+]

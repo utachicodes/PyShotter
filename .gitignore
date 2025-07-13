@@ -1,0 +1,24 @@
+# Files
+.coverage
+*.doctree
+.DS_Store
+*.orig
+*.jpg
+/*.png
+*.png.old
+*.pickle
+*.pyc
+
+# Folders
+build/
+.cache/
+dist/
+docs_out/
+*.egg-info/
+.idea/
+.pytest_cache/
+docs/output/
+.mypy_cache/
+__pycache__/
+ruff_cache/
+venv/
