@@ -5,67 +5,118 @@ All notable changes to PyShotter will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2024-12-19
+## [1.1.0] - 2026-01-22
+
+### 🎉 Feature Release - v1.1
+
+This is a feature-rich update adding many powerful capabilities while maintaining 100% backward compatibility with v1.0.
 
 ### Added
-- Initial release of PyShotter: Smart, annotated, and shareable screenshots for Python
-- **Smart Detection Features:**
-  - Code region detection using computer vision
-  - Window detection and identification
-  - OCR text extraction using Tesseract
-- **Rich Annotation Tools:**
-  - Text annotations with custom fonts and colors
-  - Shape drawing (rectangles, circles, arrows)
-  - Smart highlighting with transparency
-  - Quick markup commands
-- **Easy Sharing Capabilities:**
-  - Clipboard copy functionality
-  - Shareable link generation
-  - Cloud upload with metadata
-  - Cross-platform compatibility
-- **Advanced Features:**
-  - Sensitive data redaction (emails, phones, credit cards)
-  - Multi-monitor panorama creation
-  - Change detection between screenshots
-  - Customizable hotkey support
-  - Screenshot history and search functionality
-- Cross-platform support (Windows, macOS, Linux)
-- High-performance screenshot capture using ctypes
-- Thread-safe operations
-- Integration with PIL, NumPy, and OpenCV
-- Comprehensive documentation and examples
+
+#### Core Infrastructure
+- **Configuration System** (`config.py`) - YAML/JSON support with pydantic validation, environment variables, hot-reload
+- **Logging System** (`logging_config.py`) - Privacy-aware filtering, JSON structured logging, file rotation
+- **Enhanced Exceptions** - 8 feature-specific exception classes with recovery hints
+
+#### New Features
+- **Code Beautifier** (`beautifier.py`)
+  - 7 built-in themes (Dracula, Monokai, Nord, Solarized, GitHub, One Dark Pro, Material)
+  - Platform-specific window controls (macOS, Windows, Linux)
+  - Gradient backgrounds
+  - Drop shadows with multiple blur passes
+  - Configurable padding and styling
+  
+- **Screen Recording** (`recording.py`)
+  - GIF and MP4 export
+  - 30-60 FPS recording with threaded capture
+  - Progress callbacks with ETA
+  - Region-specific recording
+  - Memory management and disk space checking
+  
+- **AI-Powered Redaction** (`ai_features.py`)
+  - 4 redaction modes: blur, pixelate, block, generate
+  - 5 privacy templates (HIPAA/medical, PCI-DSS/financial, government, corporate, GDPR)
+  - Custom regex pattern support
+  - Face detection and blurring (Haar Cascade + DNN with auto-download)
+  
+- **Enhanced CLI** (`__main__.py`)
+  - 15+ new command-line flags
+  - `--ocr` with language and confidence options
+  - `--redact` with templates and styles
+  - `--beautify` with theme selection
+  - `--record` for screen recording
+  - `--blur-faces` for privacy
+  - `--json` for structured output
+  - Rich formatting support
+  
+- **GUI Application** (`gui.py`)
+  - System tray integration
+  - Interactive region selection
+  - Screenshot history viewer
+  - Global hotkeys (platform-specific)
+  - Quick actions menu
+  - System notifications
+
+#### CI/CD & Testing
+- Comprehensive GitHub Actions workflows
+  - Multi-platform testing (Ubuntu, macOS, Windows)
+  - Python 3.9-3.14 support
+  - Security scanning (Bandit, Safety)
+  - Coverage reporting (Codecov)
+  - Performance benchmarks
+  - Automated PyPI releases
+  
+- **Test Suite**
+  - 50+ unit tests
+  - Integration tests
+  - Performance benchmarks
+  - Cross-platform validation
+
+#### Documentation
+- Migration guide from v1.0 to v1.1
+- 3 comprehensive example scripts
+- Updated README with all features
+- API documentation improvements
 
 ### Changed
-- Rebranded from MSS to PyShotter
-- Updated all author information to Abdoullah Ndao
-- Enhanced project structure and metadata
-- Improved documentation with smart, annotated, and shareable focus
+- Expanded dependency groups (10 total: ocr, annotation, recording, gui, ai, config, cli, full, dev, tests)
+- Enhanced exception handling throughout
+- Improved error messages with recovery hints
+- Updated to modern Python practices (3.9+)
 
-### Technical
-- Python 3.9+ support
-- PEP 8 compliant code
-- Type hints throughout
-- Modern packaging with pyproject.toml
+### Dependencies
+New optional dependency groups:
+- `recording` - imageio, imageio-ffmpeg
+- `gui` - pystray, tkinter
+- `ai` - opencv-python, numpy (enhanced)
+- `config` - pyyaml, pydantic
+- `cli` - rich
+- `full` - all features combined
+
+### Installation
+```bash
+# Core features (backward compatible)
+pip install pyshotter
+
+# With all features
+pip install pyshotter[full]
+
+# Specific features
+pip install pyshotter[recording,gui,ai]
+```
+
+### Backward Compatibility
+✅ All v1.x code continues to work without changes
+✅ Existing CLI commands unchanged
+✅ Core screenshot API identical
+
+## [1.0.0] - Previous Release
+
+See previous releases for v1.x changelog.
 
 ---
 
-## Version History
-
-- **1.0.0**: Initial stable release with smart, annotated, and shareable features
-
-## Contributing
-
-To add entries to this changelog:
-
-1. Add your changes under the appropriate section
-2. Use the present tense ("Add" not "Added")
-3. Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
-4. Reference issues and pull requests when applicable
-5. Update the version number and release date when releasing
-
-## Release Process
-
-1. Update version in `src/pyshotter/__init__.py`
-2. Update this CHANGELOG.md with release date
-3. Create a git tag for the release
-4. Build and upload to PyPI
+## Links
+- [GitHub Repository](https://github.com/utachicodes/pyshotter)
+- [PyPI Package](https://pypi.org/project/pyshotter/)
+- [Documentation](https://github.com/utachicodes/pyshotter#readme)

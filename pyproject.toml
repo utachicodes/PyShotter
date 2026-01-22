@@ -36,16 +36,21 @@ classifiers = [
 keywords = [
     "screenshot",
     "screen capture",
+    "screen recording",
     "annotation",
+    "code beautification",
     "sharing",
     "smart detection",
     "ocr",
     "text extraction",
     "redaction",
+    "privacy",
+    "face blur",
     "panorama",
     "change detection",
     "hotkeys",
     "history",
+    "gui",
     "python",
     "cross-platform",
 ]
@@ -60,15 +65,18 @@ Tracker = "https://github.com/utachicodes/pyshotter/issues"
 
 [project.scripts]
 pyshotter = "pyshotter.__main__:main"
+pyshotter-gui = "pyshotter.gui:main_gui"
 
 [project.optional-dependencies]
+# Existing groups (enhanced)
 ocr = [
   "pytesseract>=0.3.10",
   "opencv-python>=4.8.0",
 ]
 annotation = [
   "opencv-python>=4.8.0",
-  "pillow>=9.0.0",
+  "pillow>=10.0.0",
+  "numpy>=1.24.0",
 ]
 sharing = [
   "pyperclip>=1.8.0",
@@ -77,6 +85,56 @@ sharing = [
 cloud = [
   "requests>=2.31.0",
   "dropbox>=11.36.0",
+]
+
+# New v1.1 feature groups
+recording = [
+  "imageio>=2.31.0",
+  "imageio-ffmpeg>=0.4.9",
+  "pillow>=10.0.0",
+  "numpy>=1.24.0",
+]
+gui = [
+  "pystray>=0.19.4",
+  "pillow>=10.0.0",
+  "pynput>=1.7.6; sys_platform == 'darwin'",
+  "keyboard>=0.13.5; sys_platform == 'win32'",
+]
+ai = [
+  "opencv-python>=4.8.0",
+  "numpy>=1.24.0",
+  "pillow>=10.0.0",
+]
+config = [
+  "pyyaml>=6.0",
+  "pydantic>=2.0.0",
+]
+cli = [
+  "rich>=13.0.0",
+]
+
+# Meta groups
+full = [
+  "pyshotter[ocr,annotation,recording,gui,ai,config,cli,sharing]",
+]
+dev = [
+  "pytest>=7.4.0",
+  "pytest-cov>=4.1.0",
+  "pytest-mock>=3.11.1",
+  "pytest-benchmark>=4.0.0",
+  "ruff>=0.1.0",
+  "mypy>=1.5.0",
+  "bandit>=1.7.5",
+  "safety>=2.3.0",
+]
+tests = [
+  "pytest>=7.4.0",
+  "pytest-cov>=4.1.0",
+  "pytest-xvfb>=3.0.0",
+]
+docs = [
+  "sphinx>=7.0.0",
+  "sphinx-rtd-theme>=1.3.0",
 ]
 
 [tool.hatch.version]
