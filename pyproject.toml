@@ -16,7 +16,7 @@ maintainers = [
 license = { file = "LICENSE.txt" }
 classifiers = [
   "Development Status :: 5 - Production/Stable",
-  "Environment :: Windows",
+  "Environment :: Win32 (MS Windows)",
   "Intended Audience :: Developers",
   "Intended Audience :: End Users/Desktop",
   "License :: OSI Approved :: MIT License",
