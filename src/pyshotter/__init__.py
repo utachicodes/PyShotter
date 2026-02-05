@@ -28,7 +28,7 @@ from .features import (
     ScreenshotHistory,
 )
 
-__version__ = "1.1.2"
+__version__ = "1.1.3"
 __author__ = "Abdoullah Ndao"
 __email__ = "abdoullahaljersi@gmail.com"
 __date__ = "2024"
