@@ -1,6 +1,7 @@
 # PyShotter
 
 [![PyPI version](https://badge.fury.io/py/pyshotter.svg)](https://badge.fury.io/py/pyshotter)
+[![Downloads](https://static.pepy.tech/badge/pyshotter)](https://pepy.tech/project/pyshotter)
 [![Tests workflow](https://github.com/utachicodes/pyshotter/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/utachicodes/pyshotter/actions/workflows/tests.yml)
 
 > [!TIP]
