@@ -10,8 +10,7 @@ This module provides professional code screenshot beautification with:
 """
 
 import platform
-from typing import Optional, Tuple, Literal
-from pathlib import Path
+from typing import Optional, Literal
 
 try:
     import cv2
@@ -79,6 +78,20 @@ THEMES = {
         'shadow': (0, 0, 0),
         'text': (201, 209, 217),
     },
+    'catppuccin': {
+        'bg_start': (30, 30, 46),
+        'bg_end': (24, 24, 37),
+        'window_bg': (30, 30, 46),
+        'shadow': (0, 0, 0),
+        'text': (205, 214, 244),
+    },
+    'one-dark': {
+        'bg_start': (40, 44, 52),
+        'bg_end': (33, 37, 43),
+        'window_bg': (40, 44, 52),
+        'shadow': (0, 0, 0),
+        'text': (171, 178, 191),
+    },
 }
 
 
@@ -137,7 +150,8 @@ class CodeBeautifierFeature:
         shadow_intensity: float = 0.5,
         corner_radius: int = 10,
         add_line_numbers: bool = False,
-        background_type: Literal['gradient', 'solid', 'transparent'] = 'gradient',
+        background_type: Literal['gradient', 'solid', 'transparent', 'image'] = 'gradient',
+        background_image: Optional[Image.Image] = None,
     ) -> ScreenShot:
         """Beautify a code screenshot.
         
@@ -148,6 +162,7 @@ class CodeBeautifierFeature:
             corner_radius: Corner radius for rounded corners
             add_line_numbers: Whether to add line numbers
             background_type: Background style
+            background_image: Optional image to use as background if background_type is 'image'
             
         Returns:
             Beautified screenshot
@@ -174,7 +189,27 @@ class CodeBeautifierFeature:
                 background = self._create_gradient_background(new_width, new_height)
             elif background_type == 'solid':
                 background = Image.new('RGB', (new_width, new_height), self.theme_colors['bg_start'])
-            else:  # transparent
+            elif background_type == 'image' and background_image:
+                # Resize and crop background image to fit
+                background = background_image.copy()
+                bg_ratio = background.width / background.height
+                target_ratio = new_width / new_height
+                
+                if bg_ratio > target_ratio:
+                    # Image is wider than needed
+                    crop_width = int(background.height * target_ratio)
+                    offset = (background.width - crop_width) // 2
+                    background = background.crop((offset, 0, offset + crop_width, background.height))
+                else:
+                    # Image is taller than needed
+                    crop_height = int(background.width / target_ratio)
+                    offset = (background.height - crop_height) // 2
+                    background = background.crop((0, offset, background.width, offset + crop_height))
+                
+                background = background.resize((new_width, new_height), Image.Resampling.LANCZOS)
+                if background.mode != 'RGB':
+                    background = background.convert('RGB')
+            else:  # transparent or fallback
                 background = Image.new('RGBA', (new_width, new_height), (0, 0, 0, 0))
             
             # Create window with shadow

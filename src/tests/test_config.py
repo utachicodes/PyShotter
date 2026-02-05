@@ -7,13 +7,10 @@ import yaml
 
 from pyshotter.config import (
     ConfigManager,
-    PyShotterConfig,
     GeneralConfig,
     OCRConfig,
     BeautifierConfig,
     RecordingConfig,
-    GUIConfig,
-    get_config_manager,
 )
 
 

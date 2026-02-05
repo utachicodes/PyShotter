@@ -2,11 +2,10 @@
 
 import pytest
 import numpy as np
-from PIL import Image
 
 from pyshotter.screenshot import ScreenShot
 from pyshotter.beautifier import CodeBeautifierFeature, get_available_themes, THEMES
-from pyshotter.exception import BeautifierError, DependencyError
+from pyshotter.exception import BeautifierError
 
 
 class TestCodeBeautifier:

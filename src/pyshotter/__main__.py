@@ -13,8 +13,6 @@ import os
 import sys
 import json
 from argparse import ArgumentParser, Namespace
-from pathlib import Path
-from typing import List, Optional
 
 from pyshotter import __version__
 from pyshotter.exception import ScreenShotError
@@ -24,32 +22,32 @@ from pyshotter.logging_config import setup_logging, get_logger
 
 # Import optional features with fallbacks
 try:
-    from pyshotter.beautifier import CodeBeautifierFeature, get_available_themes
+    from pyshotter.beautifier import CodeBeautifierFeature, get_available_themes  # noqa: F401
     BEAUTIFIER_AVAILABLE = True
 except ImportError:
     BEAUTIFIER_AVAILABLE = False
 
 try:
-    from pyshotter.recording import ScreenRecordingFeature
+    from pyshotter.recording import ScreenRecordingFeature  # noqa: F401
     RECORDING_AVAILABLE = True
 except ImportError:
     RECORDING_AVAILABLE = False
 
 try:
-    from pyshotter.ai_features import EnhancedRedactionFeature, FaceBlurFeature
+    from pyshotter.ai_features import EnhancedRedactionFeature, FaceBlurFeature  # noqa: F401
     AI_AVAILABLE = True
 except ImportError:
     AI_AVAILABLE = False
 
 try:
-    from pyshotter.features import OCRFeature
+    from pyshotter.features import OCRFeature  # noqa: F401
     OCR_AVAILABLE = True
 except ImportError:
     OCR_AVAILABLE = False
 
 try:
     from rich.console import Console
-    from rich.progress import Progress, SpinnerColumn, TextColumn
+    from rich.progress import Progress, SpinnerColumn, TextColumn  # noqa: F401
     RICH_AVAILABLE = True
     console = Console()
 except ImportError:

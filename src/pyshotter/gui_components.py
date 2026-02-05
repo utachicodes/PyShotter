@@ -1,6 +1,5 @@
 """Region selection and GUI components for PyShotter."""
 
-import sys
 from typing import Optional, Tuple, Callable
 
 try:

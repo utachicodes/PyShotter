@@ -11,14 +11,12 @@ This module provides advanced screenshot features including:
 - Sharing capabilities
 """
 
-import os
 import re
 import time
 import json
-import base64
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple
 
 try:
     import cv2
@@ -207,7 +205,6 @@ class SharingFeature:
             import pyperclip
             from PIL import Image
             import io
-            import base64
             
             # Convert to PIL Image
             img = Image.frombytes("RGB", screenshot.size, screenshot.rgb)
@@ -627,7 +624,6 @@ class ScreenshotHistory:
         Returns:
             Screenshot ID
         """
-        import json
         import hashlib
         
         # Generate unique ID

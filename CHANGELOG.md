@@ -5,6 +5,16 @@ All notable changes to PyShotter will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-02-05
+
+### Added
+- **Code Beautifier**: New professional themes: `catppuccin` and `one-dark`.
+- **Code Beautifier**: Support for custom image backgrounds.
+- **AI Features**: `bulk_redact` method for processing multiple screenshots.
+- **AI Features**: `auto_anonymize` helper for one-step PII and face redaction.
+- **Screen Recording**: Pause and Resume functionality.
+- **Screen Recording**: Watermark overlay support for recorded frames.
+
 ## [1.1.0] - 2026-01-22
 
 ### 🎉 Feature Release - v1.1

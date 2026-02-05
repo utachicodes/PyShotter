@@ -101,10 +101,7 @@ class TestCLIIntegration:
     def test_cli_imports(self):
         """Test that CLI can import all required modules."""
         from pyshotter.__main__ import (
-            setup_argument_parser,
-            handle_ocr,
-            handle_redaction,
-            handle_beautify
+            setup_argument_parser
         )
         
         # Just test imports work

@@ -8,9 +8,7 @@ This module provides a system tray application with:
 """
 
 import sys
-import platform
 from typing import Optional, Callable
-from pathlib import Path
 
 try:
     import pystray

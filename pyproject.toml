@@ -56,6 +56,10 @@ keywords = [
 ]
 dynamic = ["version"]
 
+dependencies = [
+  "mss>=9.0.1",
+]
+
 [project.urls]
 Homepage = "https://github.com/utachicodes/pyshotter"
 Documentation = "https://github.com/utachicodes/pyshotter#readme"

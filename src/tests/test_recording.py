@@ -6,7 +6,7 @@ import tempfile
 from pathlib import Path
 
 from pyshotter.recording import ScreenRecordingFeature
-from pyshotter.exception import RecordingError, DependencyError
+from pyshotter.exception import RecordingError
 
 
 class TestScreenRecording:

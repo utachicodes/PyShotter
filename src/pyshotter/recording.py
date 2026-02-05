@@ -28,7 +28,6 @@ try:
 except ImportError:
     NUMPY_AVAILABLE = False
 
-from .screenshot import ScreenShot
 from .exception import RecordingError, DependencyError
 from .logging_config import get_logger, PerformanceLogger
 
@@ -159,7 +158,9 @@ class ScreenRecordingFeature:
                 'max_duration': max_duration,
                 'progress_callback': progress_callback,
                 'stop_event': threading.Event(),
+                'pause_event': threading.Event(),
                 'frame_queue': queue.Queue(maxsize=60),  # Buffer up to 2 seconds at 30fps
+                'overlay_text': None,
             }
             
             self._recordings[recording_id] = recording
@@ -225,6 +226,37 @@ class ScreenRecordingFeature:
             logger.error(f"Failed to stop recording: {e}")
             raise RecordingError(f"Failed to stop recording: {e}", recording_id=recording_id)
     
+    def pause_recording(self, recording_id: str) -> None:
+        """Pause recording.
+        
+        Args:
+            recording_id: Recording ID
+        """
+        if recording_id in self._recordings:
+            self._recordings[recording_id]['pause_event'].set()
+            logger.info(f"Paused recording: {recording_id}")
+
+    def resume_recording(self, recording_id: str) -> None:
+        """Resume recording.
+        
+        Args:
+            recording_id: Recording ID
+        """
+        if recording_id in self._recordings:
+            self._recordings[recording_id]['pause_event'].clear()
+            logger.info(f"Resumed recording: {recording_id}")
+
+    def set_overlay(self, recording_id: str, text: Optional[str]) -> None:
+        """Set watermark overlay for recording.
+        
+        Args:
+            recording_id: Recording ID
+            text: Watermark text (None to disable)
+        """
+        if recording_id in self._recordings:
+            self._recordings[recording_id]['overlay_text'] = text
+            logger.info(f"Set overlay for {recording_id}: {text}")
+    
     def _capture_loop(self, recording_id: str) -> None:
         """Background loop to capture frames.
         
@@ -254,6 +286,10 @@ class ScreenRecordingFeature:
                     
                     # Capture frame
                     try:
+                        if pause_event.is_set():
+                            time.sleep(0.1)
+                            continue
+
                         if recording['region']:
                             x, y, w, h = recording['region']
                             monitor = {'left': x, 'top': y, 'width': w, 'height': h}
@@ -264,8 +300,12 @@ class ScreenRecordingFeature:
                         
                         # Convert to numpy array for imageio
                         img_array = np.frombuffer(screenshot.rgb, dtype=np.uint8)
-                        img_array = img_array.reshape(screenshot.height, screenshot.width, 3)
+                        img_array = img_array.reshape(screenshot.height, screenshot.width, 3).copy()
                         
+                        # Apply overlay if set
+                        if recording['overlay_text']:
+                            img_array = self._apply_overlay(img_array, recording['overlay_text'])
+
                         recording['frames'].append(img_array)
                         frame_count += 1
                         
@@ -362,3 +402,23 @@ class ScreenRecordingFeature:
                 recording['frames'].clear()
             del self._recordings[recording_id]
             logger.debug(f"Cleaned up recording: {recording_id}")
+
+    def _apply_overlay(self, img_array: np.ndarray, text: str) -> np.ndarray:
+        """Apply simple text watermark to frame."""
+        try:
+            from PIL import Image, ImageDraw, ImageFont
+            img = Image.fromarray(img_array)
+            draw = ImageDraw.Draw(img)
+            
+            # Simple watermark bottom-right
+            h, w = img_array.shape[:2]
+            try:
+                font = ImageFont.truetype("arial.ttf", 20)
+            except:
+                font = ImageFont.load_default()
+                
+            draw.text((w - 150, h - 30), text, fill=(255, 255, 255), font=font)
+            return np.array(img)
+        except Exception as e:
+            logger.warning(f"Failed to apply overlay: {e}")
+            return img_array

@@ -5,7 +5,6 @@ Source: https://github.com/utachicodes/pyshotter.
 import os
 
 import numpy
-import pytest
 
 from pyshotter import pyshotter
 

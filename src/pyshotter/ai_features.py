@@ -8,7 +8,6 @@ This module provides:
 
 import re
 from typing import List, Dict, Optional, Literal, Tuple
-from pathlib import Path
 
 try:
     import cv2
@@ -98,9 +97,16 @@ class EnhancedRedactionFeature:
         
         self.mode = mode
         self.custom_patterns: Dict[str, str] = {}
+        self._face_blur = None
         
         logger.info(f"Initialized redaction with mode={mode}")
     
+    def _get_face_blur(self) -> 'FaceBlurFeature':
+        """Lazy load face blur feature."""
+        if self._face_blur is None:
+            self._face_blur = FaceBlurFeature()
+        return self._face_blur
+
     def add_custom_patterns(self, patterns: Dict[str, str]) -> None:
         """Add custom regex patterns for redaction.
         
@@ -109,6 +115,61 @@ class EnhancedRedactionFeature:
         """
         self.custom_patterns.update(patterns)
         logger.info(f"Added {len(patterns)} custom patterns")
+    
+    def bulk_redact(
+        self,
+        screenshots: List[ScreenShot],
+        template: Optional[str] = None,
+        **kwargs
+    ) -> List[ScreenShot]:
+        """Redact multiple screenshots.
+        
+        Args:
+            screenshots: List of screenshots to redact
+            template: Optional template name
+            **kwargs: Additional args for redact_sensitive_data
+            
+        Returns:
+            List of redacted screenshots
+        """
+        results = []
+        for i, sct in enumerate(screenshots):
+            logger.debug(f"Bulk redacting screenshot {i+1}/{len(screenshots)}")
+            if template:
+                results.append(self.redact_with_template(sct, template))
+            else:
+                results.append(self.redact_sensitive_data(sct, **kwargs))
+        return results
+
+    def auto_anonymize(
+        self,
+        screenshot: ScreenShot,
+        template: Optional[Literal['medical', 'financial', 'government', 'corporate', 'gdpr']] = 'gdpr',
+        blur_faces: bool = True,
+    ) -> ScreenShot:
+        """One-step anonymization (PII + faces).
+        
+        Args:
+            screenshot: Screenshot to anonymize
+            template: Privacy template for PII
+            blur_faces: Whether to also blur faces
+            
+        Returns:
+            Anonymized screenshot
+        """
+        result = screenshot
+        
+        # 1. Redact PII
+        if template:
+            result = self.redact_with_template(result, template)
+        else:
+            result = self.redact_sensitive_data(result)
+            
+        # 2. Blur faces
+        if blur_faces:
+            result = self._get_face_blur().blur_faces(result)
+            
+        return result
     
     def redact_with_template(
         self,

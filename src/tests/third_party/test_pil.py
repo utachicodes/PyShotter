@@ -3,10 +3,8 @@ Source: https://github.com/utachicodes/pyshotter.
 """
 
 import os
-import sys
 
 import PIL.Image
-import pytest
 
 from pyshotter import pyshotter
 
